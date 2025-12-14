@@ -1,0 +1,31 @@
+:root {
+    font-size: 10px;
+    --cinza-texto: #626262;
+    --branco-basico: #ebebeb;
+    --cinza-claro: #8b8b8b;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.kantumruy-pro {
+    font-family: "Kantumruy Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 1rem;
+}
+
+#contatos {
+    display: flex;
+}
+
+#nome-container>p {
+    font-size: 0.8rem;
+}
