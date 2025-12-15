@@ -80,6 +80,144 @@ a {
     transform: translate(-50%, -50%);
 }
 
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), #1a1a2e;
+    /* Placeholder dark blueish bg */
+    position: relative;
+    padding: 0 1rem;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-family: 'Times New Roman', serif;
+    /* Trying to match the serif look of the title */
+}
+
+.hero-content p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.play-button-placeholder {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.play-button-placeholder::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 12px solid white;
+    margin-left: 4px;
+}
+
+.play-button-placeholder:hover {
+    transform: scale(1.1);
+    border-color: white;
+}
+
+
+/* Shared Section Styles */
+section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.6;
+}
+
+/* Grid Systems */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Cards & Placeholders */
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background-color: var(--placeholder-base);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s;
+}
+
+.image-placeholder.large {
+    aspect-ratio: 16/9;
+}
+
+.image-placeholder:hover {
+    opacity: 0.8;
+}
+
+/* Placeholder Colors */
+.color-1 {
+    background-color: #2c3e50;
+}
+
+.color-2 {
+    background-color: #c0392b;
+}
+
+.color-3 {
+    background-color: #2980b9;
+}
+
+.color-4 {
+    background-color: #7f8c8d;
+}
+
+.color-5 {
+    background-color: #d35400;
+}
+
+
 
 #projeto-1 {
     background-image: url(./imagens/receitas.png);
