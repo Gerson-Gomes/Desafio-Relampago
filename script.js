@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grid) return;
 
     // Data Array
-    const cardData = [
+    const baseCardData = [
         {
             title: 'Nærøyfjorden',
             subtitle: 'Norway',
@@ -18,8 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Grossglockner',
             subtitle: 'Austria',
             colorClass: 'color-3'
+        },
+        {
+            title: 'Teste',
+            subtitle: 'Teste',
+            colorClass: 'color-4'
+        },
+        {
+            title: 'Teste2',
+            subtitle: 'Teste2',
+            colorClass: 'color-5'
         }
     ];
+
+    const cardData = [...baseCardData, ...baseCardData, ...baseCardData];
 
     // Render Cards
     cardData.forEach(data => {

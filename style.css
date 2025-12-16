@@ -44,14 +44,9 @@ a {
 .card {
     min-width: 300px;
     flex-shrink: 0;
-    transition: transform 0.1s linear;
-    /* Optional smoother updates if needed, though usually requestAnimationFrame handles it */
 }
 
-/* Remove transition for the continuous loop to prevent jumping artifact if we were using it for hover, but stick to JS */
-.grid-3:hover .card {
-    /* pause logic will be in JS */
-}
+
 
 .nav-links {
     display: flex;
@@ -94,16 +89,16 @@ a {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(253, 246, 227, 0.8), rgba(253, 246, 227, 0.95)), #eee8d5;
-    /* Placeholder light bg */
+    background: linear-gradient(rgb(202 187 148 / 80%), rgba(253, 246, 227, 0.95)), #eee8d5;
     position: relative;
     padding: 0 1rem;
 }
+
 
 .hero-content h1 {
     font-size: 4rem;
@@ -125,9 +120,9 @@ a {
 
 
 
-/* Shared Section Styles */
+
 section {
-    padding: 6rem 2rem;
+    padding: 0rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
