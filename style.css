@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg-color: #fdf6e3;
     --bg-secondary: #eee8d5;
@@ -144,7 +148,7 @@ a {
 
 /* Hero Section */
 .hero {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -305,7 +309,7 @@ section {
 /* Footer */
 footer {
     position: relative;
-    height: 400px;
+    height: 200px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -345,6 +349,38 @@ footer {
 
 .footer-links a:hover {
     color: var(--text-color);
+}
+
+/* Logo Base Styles */
+.git-logo a,
+.linkedin-logo a {
+    display: block;
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    /* Hide text */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.3s;
+}
+
+/* Light Mode (Default) - Dark Logos */
+.git-logo a {
+    background-image: url('./imagens/github-mark.svg');
+}
+
+.linkedin-logo a {
+    background-image: url('./imagens/InBug-Black.png');
+}
+
+/* Dark Mode - White Logos */
+body.dark-mode .git-logo a {
+    background-image: url('./imagens/github-mark-white.svg');
+}
+
+body.dark-mode .linkedin-logo a {
+    background-image: url('./imagens/InBug-White.png');
 }
 
 #projeto-1 {
