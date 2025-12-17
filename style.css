@@ -1,15 +1,50 @@
 :root {
-    --bg-color: #0d0d0d;
-    --text-color: #ffffff;
-    --accent-color: #3b82f6;
-    --placeholder-base: #2a2a2a;
+    --bg-color: #fdf6e3;
+    --bg-secondary: #eee8d5;
+    --text-color: #7a740e;
+    --text-secondary: #657b83;
+    --text-tertiary: #93a1a1;
+    --accent-color: #cb4b16;
+    --link-color: #268bd2;
+    --placeholder-base: #eee8d5;
     --font-main: 'Inter', sans-serif;
+
+    /* Gradients */
+    --hero-gradient: linear-gradient(rgb(202 187 148 / 80%), rgba(253, 246, 227, 0.95));
+    --footer-gradient: linear-gradient(to top, #fdf6e3, transparent);
+
+    /* Toggle Button */
+    --toggle-bg: #eee8d5;
+    --toggle-icon: #b58900;
+}
+
+body.dark-mode {
+    /* Carbon-like Dark Mode */
+    --bg-color: #1a1a1a;
+    --bg-secondary: #2c2c2c;
+    --text-color: #d4af37;
+    /* Gold */
+    --text-secondary: #c0c0c0;
+    /* Silver/Gray */
+    --text-tertiary: #a0a0a0;
+    --accent-color: #ffd700;
+    /* Brighter Gold */
+    --link-color: #e6c200;
+    --placeholder-base: #333333;
+
+    /* Carbon Fiber-ish Gradient for Hero overrides if needed, or just dark */
+    --hero-gradient: linear-gradient(rgba(0, 0, 0, 0.8), rgba(26, 26, 26, 0.95));
+    --footer-gradient: linear-gradient(to top, #1a1a1a, transparent);
+
+    --toggle-bg: #333;
+    --toggle-icon: #d4af37;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 body {
@@ -17,6 +52,16 @@ body {
     color: var(--text-color);
     font-family: var(--font-main);
     line-height: 1.6;
+    /* Optional: Carbon fiber texture hint for dark mode */
+}
+
+body.dark-mode {
+    background-image:
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+    background-color: #202020;
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
 }
 
 a {
@@ -41,9 +86,18 @@ a {
     text-transform: uppercase;
 }
 
+.card {
+    min-width: 300px;
+    flex-shrink: 0;
+}
+
+
+
 .nav-links {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    /* Handle button alignment */
 }
 
 .nav-links a:hover {
@@ -61,11 +115,12 @@ a {
 .logo-icon {
     width: 24px;
     height: 32px;
-    background-color: white;
+    background-color: var(--text-color);
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
-    border: 2px solid white;
+    border: 2px solid var(--text-color);
     position: relative;
+    transition: all 0.3s;
 }
 
 .logo-icon::after {
@@ -78,20 +133,21 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
 }
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), #1a1a2e;
-    /* Placeholder dark blueish bg */
+    background: var(--hero-gradient), var(--bg-secondary);
     position: relative;
     padding: 0 1rem;
 }
+
 
 .hero-content h1 {
     font-size: 4rem;
@@ -99,6 +155,7 @@ a {
     margin-bottom: 0.5rem;
     font-family: 'Times New Roman', serif;
     /* Trying to match the serif look of the title */
+    color: var(--text-color);
 }
 
 .hero-content p {
@@ -106,40 +163,15 @@ a {
     letter-spacing: 1px;
     margin-bottom: 2rem;
     opacity: 0.8;
-}
-
-.play-button-placeholder {
-    width: 60px;
-    height: 60px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.play-button-placeholder::before {
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 12px solid white;
-    margin-left: 4px;
-}
-
-.play-button-placeholder:hover {
-    transform: scale(1.1);
-    border-color: white;
+    color: var(--text-secondary);
 }
 
 
-/* Shared Section Styles */
+
+
+
 section {
-    padding: 6rem 2rem;
+    padding: 0rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -155,20 +187,25 @@ section {
 .section-header h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 .section-header p {
     font-size: 0.9rem;
-    color: #999;
+    color: var(--text-tertiary);
     line-height: 1.6;
 }
 
 /* Grid Systems */
 .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 2rem;
+    /* 32px */
     margin-bottom: 2rem;
+    overflow-x: hidden;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .grid-2 {
@@ -185,7 +222,7 @@ section {
     background-color: var(--placeholder-base);
     border-radius: 4px;
     margin-bottom: 1.5rem;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, background-color 0.3s;
 }
 
 .image-placeholder.large {
@@ -196,29 +233,134 @@ section {
     opacity: 0.8;
 }
 
-/* Placeholder Colors */
+/* Placeholder Colors - In dark mode, maybe dampen them? Or keep vivid. Keeping vivid for now */
 .color-1 {
-    background-color: #2c3e50;
+    background-color: #859900;
 }
 
 .color-2 {
-    background-color: #c0392b;
+    background-color: #dc322f;
 }
 
 .color-3 {
-    background-color: #2980b9;
+    background-color: #268bd2;
 }
 
 .color-4 {
-    background-color: #7f8c8d;
+    background-color: #2aa198;
 }
 
 .color-5 {
-    background-color: #d35400;
+    background-color: #cb4b16;
 }
 
 
+.card-content h3,
+.journal-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Times New Roman', serif;
+    color: var(--text-color);
+}
+
+.card-content span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-tertiary);
+}
+
+.journal-content .date {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.journal-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+.see-more {
+    margin-top: 3rem;
+}
+
+.see-more a {
+    font-size: 0.8rem;
+    color: var(--link-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.footer-bg-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--footer-gradient), var(--bg-secondary);
+    z-index: -1;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-tertiary);
+}
+
+.footer-links a:hover {
+    color: var(--text-color);
+}
 
 #projeto-1 {
     background-image: url(./imagens/receitas.png);
+}
+
+/* Toggle Button Style */
+#theme-toggle {
+    background-color: var(--toggle-bg);
+    color: var(--toggle-icon);
+    border: 1px solid var(--toggle-icon);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--toggle-icon);
+    color: var(--bg-color);
 }
