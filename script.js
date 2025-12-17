@@ -6,19 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const baseCardData = [
         {
             title: 'Gerson-Receitas',
-            subtitle: 'App de Receitas',
+            subtitle: 'Projeto de receitas',
             image: './imagens/receitas.png',
             url: 'https://gerson-gomes.github.io/app-de-receitas/'
         },
         {
             title: 'Burger Project',
-            subtitle: 'React Application',
+            subtitle: 'Projeto React',
             image: './imagens/burgerReact.png',
             url: 'https://burger-react-nine.vercel.app/'
         },
         {
-            title: 'Game Arena',
-            subtitle: 'Pygame Project',
+            title: 'Arena de Aventura',
+            subtitle: 'Projeto de jogo javascript',
             image: './imagens/arena.png',
             url: 'https://gerson-gomes.github.io/Cube-Arena/'
         },
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards.forEach(card => card.style.transform = 'none');
             // Reset offsets
             offsets = cards.map(() => 0);
-            
+
             requestAnimationFrame(loop);
             return;
         }
