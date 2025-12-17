@@ -101,4 +101,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start the loop
     requestAnimationFrame(loop);
+
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        // Check for saved user preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Save preference
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
 });

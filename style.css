@@ -1,15 +1,50 @@
 :root {
     --bg-color: #fdf6e3;
-    --text-color: #b58900;
+    --bg-secondary: #eee8d5;
+    --text-color: #7a740e;
+    --text-secondary: #657b83;
+    --text-tertiary: #93a1a1;
     --accent-color: #cb4b16;
+    --link-color: #268bd2;
     --placeholder-base: #eee8d5;
     --font-main: 'Inter', sans-serif;
+
+    /* Gradients */
+    --hero-gradient: linear-gradient(rgb(202 187 148 / 80%), rgba(253, 246, 227, 0.95));
+    --footer-gradient: linear-gradient(to top, #fdf6e3, transparent);
+
+    /* Toggle Button */
+    --toggle-bg: #eee8d5;
+    --toggle-icon: #b58900;
+}
+
+body.dark-mode {
+    /* Carbon-like Dark Mode */
+    --bg-color: #1a1a1a;
+    --bg-secondary: #2c2c2c;
+    --text-color: #d4af37;
+    /* Gold */
+    --text-secondary: #c0c0c0;
+    /* Silver/Gray */
+    --text-tertiary: #a0a0a0;
+    --accent-color: #ffd700;
+    /* Brighter Gold */
+    --link-color: #e6c200;
+    --placeholder-base: #333333;
+
+    /* Carbon Fiber-ish Gradient for Hero overrides if needed, or just dark */
+    --hero-gradient: linear-gradient(rgba(0, 0, 0, 0.8), rgba(26, 26, 26, 0.95));
+    --footer-gradient: linear-gradient(to top, #1a1a1a, transparent);
+
+    --toggle-bg: #333;
+    --toggle-icon: #d4af37;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 body {
@@ -17,6 +52,16 @@ body {
     color: var(--text-color);
     font-family: var(--font-main);
     line-height: 1.6;
+    /* Optional: Carbon fiber texture hint for dark mode */
+}
+
+body.dark-mode {
+    background-image:
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+    background-color: #202020;
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
 }
 
 a {
@@ -51,6 +96,8 @@ a {
 .nav-links {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    /* Handle button alignment */
 }
 
 .nav-links a:hover {
@@ -73,6 +120,7 @@ a {
     transform: rotate(-45deg);
     border: 2px solid var(--text-color);
     position: relative;
+    transition: all 0.3s;
 }
 
 .logo-icon::after {
@@ -85,6 +133,7 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
 }
 
 /* Hero Section */
@@ -94,7 +143,7 @@ a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgb(202 187 148 / 80%), rgba(253, 246, 227, 0.95)), #eee8d5;
+    background: var(--hero-gradient), var(--bg-secondary);
     position: relative;
     padding: 0 1rem;
 }
@@ -106,7 +155,7 @@ a {
     margin-bottom: 0.5rem;
     font-family: 'Times New Roman', serif;
     /* Trying to match the serif look of the title */
-    color: #b58900;
+    color: var(--text-color);
 }
 
 .hero-content p {
@@ -114,7 +163,7 @@ a {
     letter-spacing: 1px;
     margin-bottom: 2rem;
     opacity: 0.8;
-    color: #657b83;
+    color: var(--text-secondary);
 }
 
 
@@ -138,11 +187,12 @@ section {
 .section-header h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 .section-header p {
     font-size: 0.9rem;
-    color: #93a1a1;
+    color: var(--text-tertiary);
     line-height: 1.6;
 }
 
@@ -172,7 +222,7 @@ section {
     background-color: var(--placeholder-base);
     border-radius: 4px;
     margin-bottom: 1.5rem;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, background-color 0.3s;
 }
 
 .image-placeholder.large {
@@ -183,7 +233,7 @@ section {
     opacity: 0.8;
 }
 
-/* Placeholder Colors */
+/* Placeholder Colors - In dark mode, maybe dampen them? Or keep vivid. Keeping vivid for now */
 .color-1 {
     background-color: #859900;
 }
@@ -210,19 +260,20 @@ section {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     font-family: 'Times New Roman', serif;
+    color: var(--text-color);
 }
 
 .card-content span {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #93a1a1;
+    color: var(--text-tertiary);
 }
 
 .journal-content .date {
     display: block;
     font-size: 0.75rem;
-    color: #93a1a1;
+    color: var(--text-tertiary);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -230,7 +281,7 @@ section {
 
 .journal-content p {
     font-size: 0.9rem;
-    color: #657b83;
+    color: var(--text-secondary);
     margin-top: 0.5rem;
 }
 
@@ -240,7 +291,7 @@ section {
 
 .see-more a {
     font-size: 0.8rem;
-    color: #268bd2;
+    color: var(--link-color);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -261,7 +312,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, #fdf6e3, transparent), #eee8d5;
+    background: var(--footer-gradient), var(--bg-secondary);
     z-index: -1;
 }
 
@@ -274,7 +325,7 @@ footer {
     align-items: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .footer-links {
@@ -283,15 +334,33 @@ footer {
 }
 
 .footer-links a {
-    color: #999;
+    color: var(--text-tertiary);
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--text-color);
 }
-
-
 
 #projeto-1 {
     background-image: url(./imagens/receitas.png);
+}
+
+/* Toggle Button Style */
+#theme-toggle {
+    background-color: var(--toggle-bg);
+    color: var(--toggle-icon);
+    border: 1px solid var(--toggle-icon);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--toggle-icon);
+    color: var(--bg-color);
 }
