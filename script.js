@@ -5,30 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Data Array
     const baseCardData = [
         {
-            title: 'Nærøyfjorden',
-            subtitle: 'Norway',
-            colorClass: 'color-1'
+            title: 'Gerson-Receitas',
+            subtitle: 'App de Receitas',
+            image: './imagens/receitas.png',
+            url: 'https://gerson-gomes.github.io/app-de-receitas/'
         },
         {
-            title: 'Antelope Canyon',
-            subtitle: 'United States',
-            colorClass: 'color-2'
+            title: 'Burger Project',
+            subtitle: 'React Application',
+            image: './imagens/burgerReact.png',
+            url: 'https://burger-react-nine.vercel.app/'
         },
         {
-            title: 'Grossglockner',
-            subtitle: 'Austria',
-            colorClass: 'color-3'
+            title: 'Game Arena',
+            subtitle: 'Pygame Project',
+            image: './imagens/arena.png',
+            url: 'https://gerson-gomes.github.io/Cube-Arena/'
         },
-        {
-            title: 'Teste',
-            subtitle: 'Teste',
-            colorClass: 'color-4'
-        },
-        {
-            title: 'Teste2',
-            subtitle: 'Teste2',
-            colorClass: 'color-5'
-        }
+
     ];
 
     const cardData = [...baseCardData, ...baseCardData, ...baseCardData];
@@ -38,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <div class="image-placeholder ${data.colorClass}"></div>
+            <div class="image-placeholder" style="background-image: url('${data.image}'); background-size: cover; background-position: center;"><a class="card-link" href="${data.url}" target="_blank"></a></div>
             <div class="card-content">
                 <h3>${data.title}</h3>
                 <span>${data.subtitle}</span>
