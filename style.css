@@ -115,35 +115,32 @@ a {
 }
 
 .logo-placeholder {
-    width: 40px;
-    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo-icon {
-    width: 24px;
-    height: 32px;
-    background-color: var(--text-color);
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    border: 2px solid var(--text-color);
-    position: relative;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    /* Align items vertically */
     transition: all 0.3s;
 }
 
+.logo-icon svg {
+    height: 3rem;
+    width: auto;
+    fill: var(--text-color);
+    stroke: var(--text-color);
+    overflow: visible;
+    /* Fix cropping */
+    transition: fill 0.3s, stroke 0.3s;
+}
+
+/* Cleanup old pseudo-element if not needed for the SVGs */
 .logo-icon::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background-color: var(--bg-color);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: background-color 0.3s;
+    display: none;
 }
 
 /* Hero Section */
