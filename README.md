@@ -1,6 +1,6 @@
 # Desafio Relâmpago
 
-Projeto desenvolvido com foco em design limpo e elegante, oferecendo uma experiência visual agradável e funcional.
+Projeto desenvolvido com foco em design limpo e elegante, oferecendo uma experiência visual agradável e funcional. O projeto foi desenvolvido como parte da trilha de desenvolvimento fullstack da Alpha Edtech. Ele é feito de forma responsiva e adaptada para diferentes tamanhos de tela.
 
 ## Tecnologias Utilizadas
 
