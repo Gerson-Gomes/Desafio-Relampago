@@ -103,22 +103,141 @@ a {
 
 
 
-.nav-links {
+.nav-menu {
     display: flex;
     gap: 3rem;
     align-items: center;
-    /* Handle button alignment */
 }
 
-.nav-links a:hover {
+.nav-link {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.nav-link:hover {
     color: var(--accent-color);
 }
+
 
 .logo-placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/* Mobile Toggle styling (Hidden on Desktop) */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.mobile-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.3s;
+}
+
+/* Default: Desktop (Logo Visibility) */
+.logo-mobile {
+    display: none;
+}
+
+.logo-desktop {
+    display: flex;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+
+    /* Navbar Adjustment */
+    .navbar {
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+
+    .logo-mobile {
+        display: flex;
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        flex-direction: column;
+        background-color: var(--bg-color);
+        width: 70%;
+        height: 100vh;
+        z-index: 1000;
+        justify-content: center;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem !important;
+    }
+
+    /* Animate Hamburger to X */
+    .mobile-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobile-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Carousel Swipe Logic */
+    .grid-3 {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        cursor: grab;
+        /* Disable automatic infinite loop via JS, enable native scroll */
+    }
+
+    .grid-3::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .grid-3::-webkit-scrollbar-thumb {
+        background-color: var(--text-tertiary);
+        border-radius: 3px;
+    }
+
+    .card {
+        min-width: 85vw;
+        /* Make cards almost full width on mobile */
+        scroll-snap-align: center;
+    }
+}
+
+
+
 
 .logo-icon {
     display: flex;
@@ -131,10 +250,13 @@ a {
 .logo-icon svg {
     height: 3rem;
     width: auto;
+    overflow: visible;
+}
+
+.logo-icon svg,
+.logo-icon svg path {
     fill: var(--text-color);
     stroke: var(--text-color);
-    overflow: visible;
-    /* Fix cropping */
     transition: fill 0.3s, stroke 0.3s;
 }
 

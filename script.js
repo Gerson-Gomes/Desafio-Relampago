@@ -58,7 +58,38 @@ document.addEventListener('DOMContentLoaded', () => {
         isPaused = false;
     });
 
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
     function loop() {
+        // Validation for Mobile (< 768px)
+        if (window.innerWidth < 768) {
+            // Reset transforms to allow native scrolling
+            cards.forEach(card => card.style.transform = 'none');
+            // Reset offsets
+            offsets = cards.map(() => 0);
+            
+            requestAnimationFrame(loop);
+            return;
+        }
+
         if (!isPaused) {
             // Get current dimensions
             const gap = parseFloat(getComputedStyle(grid).gap) || 0;
