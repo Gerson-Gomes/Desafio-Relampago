@@ -193,6 +193,11 @@ a {
         right: 0;
     }
 
+    .hero {
+        height: 40vh !important;
+        align-items: flex-end !important;
+    }
+
     .hero-content h1 {
         font-size: 2rem !important;
     }
