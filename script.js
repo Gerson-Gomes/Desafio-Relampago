@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-            <div class="image-placeholder" style="background-image: url('${data.image}'); background-size: cover; background-position: center;"><a class="card-link" href="${data.url}" target="_blank"></a></div>
+            <div class="image-placeholder" style="background-image: url('${data.image}'); background-size: cover; background-position: center;"><a class="card-link" href="${data.url}" target="_blank" aria-label="${data.title}"></a></div>
             <div class="card-content">
                 <h3>${data.title}</h3>
                 <span>${data.subtitle}</span>
@@ -55,6 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     grid.addEventListener('mouseleave', () => {
+        isPaused = false;
+    });
+
+    // Keyboard focus pause logic
+    grid.addEventListener('focusin', () => {
+        isPaused = true;
+    });
+
+    grid.addEventListener('focusout', () => {
         isPaused = false;
     });
 
